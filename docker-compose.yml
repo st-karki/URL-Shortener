@@ -1,0 +1,40 @@
+services:
+  shorten-service:
+    build:
+      context: ./shorten-service
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./shorten-service/.env.production
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  redirect-service:
+    build:
+      context: ./redirect-service
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./redirect-service/.env.production
+    depends_on:
+      redis:
+        condition: service_healthy
+  redis:
+    image: redis:7.2-alpine
+    restart: always
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  redis-data:

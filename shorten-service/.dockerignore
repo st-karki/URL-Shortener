@@ -1,0 +1,12 @@
+.env.*
+pnpm-lock.yaml
+node_modules
+.prettierrc
+Dockerfile
+.github
+.vscode
+docker-compose.yaml
+LICENSE
+*.md
+.prettierrc
+*.log
