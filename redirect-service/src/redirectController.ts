@@ -9,8 +9,8 @@ const redirectUrlHandler = async (req: Request, res: Response, next: NextFunctio
     const long_url = await redirectUrlService(short_url)
     res.redirect(long_url)
   } catch (error) {
-    logger.info(error)
-    throw error
+    logger.error(error)
+    next(error)
   }
 }
 

@@ -10,3 +10,5 @@ LICENSE
 *.md
 .prettierrc
 *.log
+dist
+.gitignore

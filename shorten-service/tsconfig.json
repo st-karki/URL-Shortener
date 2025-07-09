@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2020", // Modern JS features
+    "target": "esnext", // Modern JS features
     "module": "CommonJS", // Node.js module system
-    "lib": ["ES2020"], // Library features included
+    "lib": ["ESNext"], // Library features included
     "outDir": "./dist", // Compiled JS output folder
     "rootDir": "./src", // Source TS folder
     "strict": true, // Enable all strict checks
